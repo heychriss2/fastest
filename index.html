@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        // 預設用戶名和密碼
+        const users = {
+            "xiaoming": "123456",
+            "xiaozhang": "234567",
+            "xiaohua": "345678"
+        };
+
+        function login(event) {
+            event.preventDefault(); // 防止表單提交
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (users[username] && users[username] === password) {
+                // 驗證成功，跳轉到 www.88byte.com 的指定頁面
+                window.location.href = `http://www.88byte.com?username=${username}`;
+            } else {
+                // 驗證失敗，顯示錯誤信息
+                alert('Invalid username or password');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form onsubmit="login(event)">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
